@@ -43,13 +43,13 @@ To make this approach work, you need to bridge your Ethereum-based framework to 
 a. Bridging Mechanisms
 - Cross-Chain Bridges:
 Use existing cross-chain bridges like Wormhole or Allbridge to transfer data or assets between Ethereum and Solana. Wormhole, for example, supports both token bridging and message passing, making it suitable for transferring investigation-related data (e.g., user submissions, analysis results).
-- Example: You could deploy a Solidity smart contract on Ethereum to collect user-submitted Solana wallet addresses, then use Wormhole to send this data to a Solana program (smart contract) for on-chain validation and analysis.
+ Example: You could deploy a Solidity smart contract on Ethereum to collect user-submitted Solana wallet addresses, then use Wormhole to send this data to a Solana program (smart contract) for on-chain validation and analysis.
 - Oracles:
 Use oracles like Chainlink to fetch Solana data (e.g., $LIBRA transaction data, token balances) and make it available to your Ethereum smart contract. This allows your Ethereum dApp to display Solana-based results without directly bridging assets.
-- Example: Chainlink could periodically fetch the total $LIBRA losses of affected users from Solana and update an Ethereum smart contract, which then displays the results in a dApp.
+ Example: Chainlink could periodically fetch the total $LIBRA losses of affected users from Solana and update an Ethereum smart contract, which then displays the results in a dApp.
 - Custom Middleware:
 Build custom off-chain middleware (e.g., a server or bot) to fetch Solana data, process it, and submit summaries to your Ethereum smart contract. This avoids the need for a formal bridge but requires careful security measures to ensure data integrity.
-- Example: A Python script could analyze Solana transactions, calculate user losses, and submit hashed results to an Ethereum smart contract via a transaction signed by a trusted key.
+ Example: A Python script could analyze Solana transactions, calculate user losses, and submit hashed results to an Ethereum smart contract via a transaction signed by a trusted key.
 
 b. Benefits of Bridging
 - Decentralized Integration: Bridging allows you to combine Ethereum’s transparency and user interface capabilities with Solana’s high-performance data processing, creating a hybrid system that leverages the strengths of both blockchains.
@@ -62,7 +62,7 @@ c. Challenges of Bridging
 - Security Risks: Bridges are a common attack vector in blockchain ecosystems, with many high-profile hacks (e.g., Wormhole’s $325M exploit in 2022). Any bridge you use must be thoroughly audited and secured, adding to the project’s cost and timeline.
 - Data Volume: Solana’s high transaction volume means that transferring raw $LIBRA transaction data to Ethereum via a bridge is impractical. You’d need to preprocess the data off-chain or on Solana, then bridge only summaries or hashes, limiting the utility of the bridge.
 
-##4.  Recommended Approach: Hybrid Ethereum-Solana Framework
+## 4.  Recommended Approach: Hybrid Ethereum-Solana Framework
 Based on the above, a hybrid approach where Ethereum and Solana play complementary roles is feasible, but it should be carefully designed to minimize complexity and cost while maximizing impact. Here’s a recommended framework:
 
 a. Core Investigation on Solana
@@ -78,7 +78,7 @@ Deploy a Solidity smart contract on Ethereum to collect user-submitted Solana wa
 Build a dApp (e.g., using React and Web3.js) to allow users to submit their Solana wallet addresses and view investigation results.
 - Transparency:
 Use the Ethereum smart contract to store hashes of investigation results (e.g., user loss summaries, top holder profit calculations) generated on Solana, ensuring immutability and verifiability.
-- Example: After calculating total $LIBRA losses on Solana, hash the result and submit it to the Ethereum smart contract, allowing anyone to verify the data’s integrity.
+ Example: After calculating total $LIBRA losses on Solana, hash the result and submit it to the Ethereum smart contract, allowing anyone to verify the data’s integrity.
 
 Governance and Incentives:
 If desired, deploy a governance contract on Ethereum to manage community contributions (e.g., voting on analysis methods) or distribute rewards (e.g., an ERC-20 token) to participants, such as affected users or universities.
@@ -134,7 +134,7 @@ e. Bias and Objectivity
 
 ## 7.  Expected Outcomes
 If you successfully implement a hybrid Ethereum-Solana framework, the investigation could:
-Quantify the losses of affected users and the profits of top holders, with results stored and displayed on Ethereum for transparency.
-Expose patterns of manipulation (e.g., insider trading, liquidity pool withdrawals) on Solana, with summarized evidence bridged to Ethereum for public verification.
-Provide a user-friendly dApp on Ethereum for affected users to submit data and view results, enhancing community engagement and trust.
-Produce a transparent, reproducible methodology for blockchain forensics, enhanced by open-source code and cross-chain integration, setting a standard for future investigations.
+- Quantify the losses of affected users and the profits of top holders, with results stored and displayed on Ethereum for transparency.
+- Expose patterns of manipulation (e.g., insider trading, liquidity pool withdrawals) on Solana, with summarized evidence bridged to Ethereum for public verification.
+- Provide a user-friendly dApp on Ethereum for affected users to submit data and view results, enhancing community engagement and trust.
+- Produce a transparent, reproducible methodology for blockchain forensics, enhanced by open-source code and cross-chain integration, setting a standard for future investigations.
