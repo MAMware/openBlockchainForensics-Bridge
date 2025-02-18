@@ -142,7 +142,7 @@ If you successfully implement a hybrid Ethereum-Solana framework, the investigat
 - Produce a transparent, reproducible methodology for blockchain forensics, enhanced by open-source code and cross-chain integration, setting a standard for future investigations.
 
 ## 8. Steps to create and upload Contracts
- a. Configure the development environment
+a. Configure the development environment
 ´´´bash
 npm install --save-dev hardhat
 npx hardhat
@@ -205,20 +205,25 @@ contract WalletCollector {
     function getWallet(address user) external view returns (string memory) {
         return solanaWallets
 ```
-9. The Bridge
+## 9. The Bridge
  Wormhole is a popular solution between blockchain bridges, supports messages and tokens transfers between Ethereum and Solana
 
 a - Resources and documentation
    - Wormhole
    - Wormhole SDK
-b - Basics steps to integrate Wormholee
+    
+b - Basics steps to integrate Wormhole
  1 - Install the Wormhole SDK
    ```bash
    npm install @certusone/wormhole-sdk
    ```
  2 - Configure the Proces Bridge
   Example of how to configure the SDK of Wormhole to transfere resumed data from Solana to Ethereum
-
+ - Create directore for scripts
+```bash
+mkdir scripts
+```
+- Add the bridgeData.js script in the scripts directory   
 ```Javascript
   const { createTransfer, getSignedVAA, redeemOnEth, getEmitterAddressEth } = require('@certusone/wormhole-sdk');
 
@@ -250,4 +255,32 @@ Be sure to audit the bridge process and the asoociated smart contract. Check sec
 
 2. As Chainlink Oracle
 The Chainlink oracles can be used to obtain Solana data and made them avalaible to Ethereum without full bridge
-a - Documentation and resooururcecs    
+a - Documentation and resources
+ - Chainlink:
+b - Basic steps to integrate Chainlink
+ 1 - Install Chainlink
+   ```bash
+   npm install @chainlink/contracts
+   ```
+2 - Configure the Chainlink oracle
+contracts/SolanaDataFetcher.sol
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+
+contract SolanaDataFetcher {
+    AggregatorV3Interface internal priceFeed;
+
+    constructor(address _aggregator) {
+        priceFeed = AggregatorV3Interface(_aggregator);
+    }
+
+    function getLatestData() public view returns (int) {
+        (,int price,,,) = priceFeed.latestRoundData();
+        return price;
+    }
+}
+```
+
