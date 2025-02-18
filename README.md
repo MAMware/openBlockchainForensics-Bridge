@@ -2,7 +2,7 @@
 
 Bridging this framework to Solana to integrate Solana-specific data and ensure the investigation covers $LIBRA activity.
 
-1. ## Understanding the Context and Goals
+1.  Understanding the Context and Goals
 Your investigation aims to trace $LIBRA token activity on Solana, focusing on affected users and top holders, to quantify losses, identify profits, and detect potential fraud. Solana is the primary blockchain where $LIBRA exists, so the core data collection and analysis must occur there. However, you’re considering:
 Using Ethereum’s EVM and Solidity to build part of the investigation framework (e.g., smart contracts for data aggregation, transparency, or user interaction).
 Bridging this framework to Solana to integrate Solana-specific data and ensure the investigation covers $LIBRA activity.
@@ -10,7 +10,7 @@ To evaluate this approach, we need to consider:
 What specific functionality you want to implement on Ethereum using Solidity.
 How bridging to Solana would enhance the investigation.
 Whether the added complexity is justified compared to a Solana-only solution.
-2. ## Feasibility of Using Ethereum EVM and Solidity
+2.  Feasibility of Using Ethereum EVM and Solidity
 Ethereum’s EVM is a powerful platform for building decentralized applications (dApps) using Solidity, but its role in your investigation depends on what you aim to achieve. Here’s how Ethereum and Solidity could be used, along with their benefits and limitations:
 a. Potential Uses of Ethereum and Solidity
 Data Aggregation and Transparency:
@@ -32,7 +32,7 @@ Data Storage Costs: Ethereum is expensive for storing large amounts of data due 
 Performance: Ethereum’s transaction throughput is much lower than Solana’s (15–30 TPS vs. Solana’s 65,000 TPS), making it unsuitable for real-time data processing or large-scale transaction tracing.
 Relevance to $LIBRA: Since $LIBRA exists on Solana, the core investigation (e.g., tracing transactions, analyzing token flows) must occur on Solana. Ethereum can only play a supporting role, not a primary one, which may limit its utility.
 Complexity: Adding Ethereum to the investigation introduces significant complexity, including smart contract development, testing, deployment, and bridging to Solana, which may delay the project and increase resource demands.
-3. ## Bridging Ethereum to Solana
+3.  Bridging Ethereum to Solana
 To make this approach work, you need to bridge your Ethereum-based framework to Solana, allowing data or functionality to flow between the two blockchains. Here’s how bridging could work, along with its benefits and challenges:
 a. Bridging Mechanisms
 Cross-Chain Bridges:
@@ -53,7 +53,7 @@ Complexity: Bridging introduces significant technical complexity, including smar
 Cost: Bridging data or assets between Ethereum and Solana incurs fees, especially on Ethereum’s side, which could be prohibitive if large amounts of data need to be transferred.
 Security Risks: Bridges are a common attack vector in blockchain ecosystems, with many high-profile hacks (e.g., Wormhole’s $325M exploit in 2022). Any bridge you use must be thoroughly audited and secured, adding to the project’s cost and timeline.
 Data Volume: Solana’s high transaction volume means that transferring raw $LIBRA transaction data to Ethereum via a bridge is impractical. You’d need to preprocess the data off-chain or on Solana, then bridge only summaries or hashes, limiting the utility of the bridge.
-4. ## Recommended Approach: Hybrid Ethereum-Solana Framework
+4.  Recommended Approach: Hybrid Ethereum-Solana Framework
 Based on the above, a hybrid approach where Ethereum and Solana play complementary roles is feasible, but it should be carefully designed to minimize complexity and cost while maximizing impact. Here’s a recommended framework:
 a. Core Investigation on Solana
 Data Collection and Analysis:
@@ -85,14 +85,14 @@ Open-source any bridging or middleware code, including detailed documentation on
 Documentation:
 Provide a comprehensive README explaining the hybrid framework, including setup instructions, usage examples, and security considerations.
 Include example datasets (e.g., mock Solana transaction data, mock Ethereum contract interactions) to demonstrate the code’s functionality.
-5. ## Collaboration with National Universities
+5.  Collaboration with National Universities
 Incorporating Ethereum and bridging to Solana increases the project’s complexity, making collaboration with national universities even more critical. Here’s how universities can contribute to the hybrid framework:
 Smart Contract Development: Engage university computer science or blockchain research departments to help develop, test, and audit the Solidity smart contracts on Ethereum and the Rust programs on Solana.
 Bridging Expertise: Leverage university expertise in distributed systems or cryptography to design and secure the bridging mechanism, ensuring data integrity and preventing exploits.
 Compute Resources: Use university HPC clusters or cloud credits to process Solana transaction data, reducing the cost of running a full Solana node or accessing third-party APIs.
 Outreach: Use university networks to promote the Ethereum dApp to affected users, emphasizing its transparency and security, and encouraging participation.
 Analysis and Visualization: Engage university data science or statistics departments to analyze Solana data and create visualizations (e.g., transaction graphs, loss/profit summaries), which can then be displayed via the Ethereum dApp.
-6. ## Critical Considerations
+6.  Critical Considerations
 Using Ethereum and bridging to Solana introduces several critical considerations that must be addressed to ensure the project’s success:
 a. Cost and Efficiency
 Ethereum Gas Fees: Deploying and interacting with Solidity smart contracts on Ethereum can be expensive, especially for frequent updates or large data storage. Minimize on-chain operations by using off-chain storage (e.g., IPFS) and only storing hashes or summaries on Ethereum.
@@ -111,7 +111,7 @@ Impact: Consider whether the added transparency and user interaction provided by
 e. Bias and Objectivity
 Narrative Risks: Using Ethereum to display results could amplify the perception of $LIBRA as a fraudulent scheme, especially if the dApp emphasizes user losses and insider profits. Ensure the analysis remains data-driven and considers alternative explanations (e.g., market dynamics, legitimate trading) to avoid bias.
 Transparency: By open-sourcing the code and data for both Ethereum and Solana components, you allow independent verification, reducing the risk of bias and enhancing credibility.
-7. ## Expected Outcomes
+7.  Expected Outcomes
 If you successfully implement a hybrid Ethereum-Solana framework, the investigation could:
 Quantify the losses of affected users and the profits of top holders, with results stored and displayed on Ethereum for transparency.
 Expose patterns of manipulation (e.g., insider trading, liquidity pool withdrawals) on Solana, with summarized evidence bridged to Ethereum for public verification.
