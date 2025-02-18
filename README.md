@@ -141,18 +141,18 @@ If you successfully implement a hybrid Ethereum-Solana framework, the investigat
 - Provide a user-friendly dApp on Ethereum for affected users to submit data and view results, enhancing community engagement and trust.
 - Produce a transparent, reproducible methodology for blockchain forensics, enhanced by open-source code and cross-chain integration, setting a standard for future investigations.
 
-## 8. Steps to create and upload Contracts
-a. Configure the development environment
-´´´bash
-npm install --save-dev hardhat
+## 8. Steps to create and upload Contracts 
+a. Configure the development environment 
+´´´bash 
+npm install --save-dev hardhat 
 npx hardhat
 ´´´
 b. Create the project in Hardhat
-bash
+´´´bash
 npx hardhat
-
+´´´
 c. Write the smart contracts
- Create a `folder` contracts inse your project and save the smart contracts
+ Create a folder `contracts`  and save the smart contracts
   ```bash
 mkdir contracts
  ```
@@ -205,6 +205,7 @@ contract WalletCollector {
     function getWallet(address user) external view returns (string memory) {
         return solanaWallets
 ```
+
 ## 9. The Bridge
  Wormhole is a popular solution between blockchain bridges, supports messages and tokens transfers between Ethereum and Solana
 
