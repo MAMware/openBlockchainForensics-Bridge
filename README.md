@@ -135,6 +135,74 @@ e. Bias and Objectivity
 ## 7.  Expected Outcomes
 If you successfully implement a hybrid Ethereum-Solana framework, the investigation could:
 - Quantify the losses of affected users and the profits of top holders, with results stored and displayed on Ethereum for transparency.
+- 
+
 - Expose patterns of manipulation (e.g., insider trading, liquidity pool withdrawals) on Solana, with summarized evidence bridged to Ethereum for public verification.
 - Provide a user-friendly dApp on Ethereum for affected users to submit data and view results, enhancing community engagement and trust.
 - Produce a transparent, reproducible methodology for blockchain forensics, enhanced by open-source code and cross-chain integration, setting a standard for future investigations.
+
+## 8. Steps to create and upload Contracts
+ a. Configure the development environment
+´´´bash
+npm install --save-dev hardhat
+npx hardhat
+´´´
+b. Create the project in Hardhat
+bash
+npx hardhat
+
+c. Write the smart contracts
+ Create a `folder` contracts inse your project and save the smart contracts
+  ```bash
+mkdir contracts
+ ```
+
+ contracts/ProofOfHumanityVerifier.sol
+ ```bash
+ // SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+interface IProofOfHumanity {
+    function isRegistered(address _submissionID) external view returns (bool);
+}
+
+contract ProofOfHumanityVerifier {
+    address public pohContract;
+
+    constructor(address _pohContract) {
+        pohContract = _pohContract;
+    }
+
+    function verifyHumanity(address user) external view returns (bool) {
+        IProofOfHumanity poh = IProofOfHumanity(pohContract);
+        return poh.isRegistered(user);
+    }
+}
+```
+
+contracts/WalletCollector.sol
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract WalletCollector {
+    address public owner;
+    mapping(address => string) public solanaWallets;
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not the owner");
+        _;
+    }
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function submitWallet(string memory solanaWallet) external {
+        solanaWallets[msg.sender] = solanaWallet;
+    }
+
+    function getWallet(address user) external view returns (string memory) {
+        return solanaWallets
+```
+ 
