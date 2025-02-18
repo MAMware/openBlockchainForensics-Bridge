@@ -205,4 +205,49 @@ contract WalletCollector {
     function getWallet(address user) external view returns (string memory) {
         return solanaWallets
 ```
- 
+9. The Bridge
+ Wormhole is a popular solution between blockchain bridges, supports messages and tokens transfers between Ethereum and Solana
+
+a - Resources and documentation
+   - Wormhole
+   - Wormhole SDK
+b - Basics steps to integrate Wormholee
+ 1 - Install the Wormhole SDK
+   ```bash
+   npm install @certusone/wormhole-sdk
+   ```
+ 2 - Configure the Proces Bridge
+  Example of how to configure the SDK of Wormhole to transfere resumed data from Solana to Ethereum
+
+```Javascript
+  const { createTransfer, getSignedVAA, redeemOnEth, getEmitterAddressEth } = require('@certusone/wormhole-sdk');
+
+async function bridgeData() {
+    const solanaChain = 'solana';
+    const ethereumChain = 'ethereum';
+    const bridgeAddress = 'YOUR_WORMHOLE_BRIDGE_ADDRESS';
+
+    // Data to bridge
+    const data = 'your_data_to_bridge';
+
+    // Create transfer transaction on Solana
+    const transferTx = await createTransfer(solanaChain, bridgeAddress, data);
+
+    // Submit and wait for VAA
+    const signedVAA = await getSignedVAA(solanaChain, transferTx);
+
+    // Redeem on Ethereum
+    const emitterAddress = getEmitterAddressEth(bridgeAddress);
+    await redeemOnEth(ethereumChain, bridgeAddress, signedVAA, emitterAddress);
+
+    console.log('Data bridged successfully from Solana to Ethereum');
+}
+
+bridgeData().catch(console.error);
+   ```
+c - Bridge audit and security
+Be sure to audit the bridge process and the asoociated smart contract. Check security audits for Wormhole and consider and external audit for your specefic implementation.
+
+2. As Chainlink Oracle
+The Chainlink oracles can be used to obtain Solana data and made them avalaible to Ethereum without full bridge
+a - Documentation and resooururcecs    
